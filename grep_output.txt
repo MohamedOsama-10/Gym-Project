@@ -1,0 +1,105 @@
+backend/fixed-backend/app/api/v1/memberships.py:                    text("SELECT avatar_url FROM coaches WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/coach_trainees.py:            text("SELECT COUNT(*) FROM assigned_workouts WHERE customer_id = :cid"),
+backend/fixed-backend/app/api/v1/coach_trainees.py:            text("SELECT COUNT(*) FROM assigned_workouts WHERE customer_id = :cid AND status = 'completed'"),
+backend/fixed-backend/app/api/v1/coach_trainees.py:        text("SELECT COUNT(*) FROM assigned_workouts WHERE customer_id = :cid"),
+backend/fixed-backend/app/api/v1/coach_trainees.py:        text("SELECT COUNT(*) FROM assigned_workouts WHERE customer_id = :cid AND status = 'completed'"),
+backend/fixed-backend/app/api/v1/chat.py:        rows = db.execute(text("""
+backend/fixed-backend/app/api/v1/chat.py:                    text("SELECT profile_photo_path FROM admin_profiles WHERE admin_id = :uid"),
+backend/fixed-backend/app/api/v1/chat.py:        rows = db.execute(text("""
+backend/fixed-backend/app/api/v1/chat.py:                    av_row = db.execute(text("SELECT avatar_url FROM coaches WHERE user_id = :uid"), {"uid": u.id}).fetchone()
+backend/fixed-backend/app/api/v1/chat.py:                    av_row = db.execute(text("SELECT avatar_url FROM customers WHERE user_id = :uid"), {"uid": u.id}).fetchone()
+backend/fixed-backend/app/api/v1/chat.py:                av = db.execute(text("SELECT avatar_url FROM coaches WHERE user_id = :uid"), {"uid": participant.id}).fetchone()
+backend/fixed-backend/app/api/v1/chat.py:                ap = db.execute(text("SELECT profile_photo_path FROM admin_profiles WHERE admin_id = :uid"), {"uid": participant.id}).fetchone()
+backend/fixed-backend/app/api/v1/chat.py:                    av = db.execute(text(f"SELECT avatar_url FROM {tbl} WHERE user_id = :uid"), {"uid": participant.id}).fetchone()
+backend/fixed-backend/app/api/v1/chat.py:                av = db.execute(text("SELECT avatar_url FROM customers WHERE user_id = :uid"), {"uid": participant.id}).fetchone()
+backend/fixed-backend/app/api/v1/chat.py:        ext = os.path.splitext(file.filename or "")[1].lower() or ".jpg"
+backend/fixed-backend/app/api/v1/admin.py:        text("SELECT id FROM users WHERE id = :uid"), {"uid": user_id}
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("DELETE FROM customers WHERE user_id = :uid"), uid)
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("DELETE FROM coaches WHERE user_id = :uid"), uid)
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("UPDATE subscription_requests SET approved_by = NULL WHERE approved_by = :uid"), uid)
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("DELETE FROM admins WHERE user_id = :uid"), uid)
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("DELETE FROM owners WHERE user_id = :uid"), uid)
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:    db.execute(text("DELETE FROM users WHERE id = :uid"), uid)
+backend/fixed-backend/app/api/v1/admin.py:        row = db.execute(text("""
+backend/fixed-backend/app/api/v1/admin.py:            text("SELECT avatar_url FROM coaches WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/admin.py:                text("SELECT avatar_url FROM coaches WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/admin.py:                    text("SELECT profile_photo_path FROM admin_profiles WHERE admin_id = :uid"),
+backend/fixed-backend/app/api/v1/admin.py:        text("SELECT avatar_url, bio, cv_url, social_facebook, social_instagram, social_linkedin, social_youtube FROM coaches WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/admin.py:                text("SELECT profile_photo_path FROM admin_profiles WHERE admin_id = :uid"),
+backend/fixed-backend/app/api/v1/meals.py:    file_ext = os.path.splitext(file.filename)[1].lower()
+backend/fixed-backend/app/api/v1/profile.py:            text("SELECT avatar_url, bio FROM coaches WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/profile.py:                text("UPDATE coaches SET bio = :bio WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/profile.py:        file_ext = os.path.splitext(avatar.filename)[1].lower() or '.jpg'
+backend/fixed-backend/app/api/v1/profile.py:            text("UPDATE coaches SET avatar_url = :url WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/profile.py:    row = db.execute(text(f"SELECT avatar_url FROM {table} WHERE user_id = :uid"), {"uid": current_user.id}).fetchone()
+backend/fixed-backend/app/api/v1/profile.py:    file_ext = os.path.splitext(avatar.filename or "")[1].lower() or ".jpg"
+backend/fixed-backend/app/api/v1/profile.py:        exists = db.execute(text("SELECT 1 FROM owners WHERE user_id = :uid"), {"uid": current_user.id}).fetchone()
+backend/fixed-backend/app/api/v1/profile.py:            db.execute(text("UPDATE owners SET avatar_url = :url WHERE user_id = :uid"), {"url": avatar_url, "uid": current_user.id})
+backend/fixed-backend/app/api/v1/profile.py:            db.execute(text("INSERT INTO owners (user_id, avatar_url) VALUES (:uid, :url)"), {"uid": current_user.id, "url": avatar_url})
+backend/fixed-backend/app/api/v1/profile.py:        exists = db.execute(text("SELECT 1 FROM admins WHERE user_id = :uid"), {"uid": current_user.id}).fetchone()
+backend/fixed-backend/app/api/v1/profile.py:            db.execute(text("UPDATE admins SET avatar_url = :url WHERE user_id = :uid"), {"url": avatar_url, "uid": current_user.id})
+backend/fixed-backend/app/api/v1/profile.py:            db.execute(text("INSERT INTO admins (user_id, avatar_url) VALUES (:uid, :url)"), {"uid": current_user.id, "url": avatar_url})
+backend/fixed-backend/app/api/v1/profile.py:    file_ext = os.path.splitext(cv.filename)[1].lower() or ".pdf"
+backend/fixed-backend/app/api/v1/profile.py:        insert_sql = text("""
+backend/fixed-backend/app/api/v1/profile.py:            coach_row = db.execute(text("""
+backend/fixed-backend/app/api/v1/profile.py:        file_ext = os.path.splitext(avatar.filename)[1].lower()
+backend/fixed-backend/app/api/v1/auth.py:    sql = text(f"""
+backend/fixed-backend/app/api/v1/auth.py:        insert_sql = text("""
+backend/fixed-backend/app/api/v1/training_programs.py:        result = db.execute(text("""
+backend/fixed-backend/app/api/v1/training_programs.py:            db.execute(text(alter_sql))
+backend/fixed-backend/app/api/v1/training_programs.py:    result = db.execute(text(_SELECT + """
+backend/fixed-backend/app/api/v1/training_programs.py:    result = db.execute(text(_SELECT + """
+backend/fixed-backend/app/api/v1/training_programs.py:    result = db.execute(text(_SELECT + """
+backend/fixed-backend/app/api/v1/training_programs.py:    result = db.execute(text(_SELECT + """
+backend/fixed-backend/app/api/v1/training_programs.py:    result = db.execute(text("""
+backend/fixed-backend/app/api/v1/training_programs.py:    fetch = db.execute(text(_SELECT + "WHERE id = :id"), {"id": new_id})
+backend/fixed-backend/app/api/v1/training_programs.py:    db.execute(text(f"""
+backend/fixed-backend/app/api/v1/training_programs.py:    result = db.execute(text(_SELECT + "WHERE id = :id AND coach_id = :coach_id"),
+backend/fixed-backend/app/api/v1/training_programs.py:    db.execute(text("""
+backend/fixed-backend/app/api/v1/workouts.py:        query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:            exercises_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        history_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        verify_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:            update_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:            update_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:            check_session = text("""
+backend/fixed-backend/app/api/v1/workouts.py:                wt_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:                insert_session = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:            exercises_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        template_check = text("SELECT id FROM workout_templates WHERE id = :template_id")
+backend/fixed-backend/app/api/v1/workouts.py:        assign_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        update_template = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        create_template = text("""
+backend/fixed-backend/app/api/v1/workouts.py:            insert_ex = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        assign_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        delete_query = text("DELETE FROM assigned_workouts WHERE id = :workout_id")
+backend/fixed-backend/app/api/v1/workouts.py:        workouts_query = text("""
+backend/fixed-backend/app/api/v1/workouts.py:        result = db.execute(text(query_str), params)
+backend/fixed-backend/app/api/v1/workouts.py:        query = text("""
+backend/fixed-backend/app/api/v1/gyms.py:                text("SELECT avatar_url, bio, cv_url FROM coaches WHERE id = :cid"),
+backend/fixed-backend/app/api/v1/gyms.py:            rc_row = db.execute(text("""
+backend/fixed-backend/app/api/v1/gyms.py:    ext = os.path.splitext(file.filename or "")[1].lower() or ".jpg"
+backend/fixed-backend/app/api/v1/gyms.py:            rc_row2 = db.execute(text("""
+backend/fixed-backend/app/api/v1/gyms.py:    active_members = db.execute(text("""
+backend/fixed-backend/app/api/v1/gyms.py:        todays_checkins = db.execute(text("""
+backend/fixed-backend/app/api/v1/gyms.py:        revenue = db.execute(text("""
+backend/fixed-backend/app/api/v1/admin_profile.py:        ext = os.path.splitext(profile_photo.filename)[1] or ".jpg"
+backend/fixed-backend/app/api/v1/admin_profile.py:    ext = os.path.splitext(profile_photo.filename)[1] or ".jpg"
