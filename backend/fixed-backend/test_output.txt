@@ -21,31 +21,36 @@ __________________________ ERROR collecting app/tests __________________________
     exec(co, module.__dict__)
 app/tests/conftest.py:5: in <module>
     from app.main import app
-app/main.py:11: in <module>
-    from app.api.v1 import (
-app/api/v1/auth.py:11: in <module>
-    from app.database import get_db
-app/database.py:48: in <module>
-    engine = create_engine(
-<string>:2: in create_engine
-    ???
-/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py:281: in warned
-    return fn(*args, **kwargs)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^
-/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/sqlalchemy/engine/create.py:599: in create_engine
-    dbapi = dbapi_meth(**dbapi_args)
-            ^^^^^^^^^^^^^^^^^^^^^^^^
-/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/sqlalchemy/connectors/pyodbc.py:60: in import_dbapi
-    return __import__("pyodbc")
-           ^^^^^^^^^^^^^^^^^^^^
-E   ImportError: libodbc.so.2: cannot open shared object file: No such file or directory
+app/main.py:17: in <module>
+    from app.database import engine, Base
+E   ImportError: cannot import name 'engine' from 'app.database' (/app/backend/fixed-backend/app/database.py)
 =============================== warnings summary ===============================
-../../../home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/pydantic/_internal/_config.py:295
+../../../home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/pydantic/_internal/_config.py:295: 32 warnings
   /home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/pydantic/_internal/_config.py:295: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
     warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
 
+app/database.py:44
+  /app/backend/fixed-backend/app/database.py:44: MovedIn20Warning: The ``declarative_base()`` function is now available as sqlalchemy.orm.declarative_base(). (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    Base = declarative_base()
+
+app/schemas/auth.py:19
+  /app/backend/fixed-backend/app/schemas/auth.py:19: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+    @validator('goal')
+
+app/schemas/auth.py:28
+  /app/backend/fixed-backend/app/schemas/auth.py:28: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+    @validator('height', 'weight', 'weight_goal')
+
+app/schemas/booking.py:15
+  /app/backend/fixed-backend/app/schemas/booking.py:15: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+    @validator('end_time')
+
+app/api/v1/profile.py:16
+  /app/backend/fixed-backend/app/api/v1/profile.py:16: DeprecationWarning: 'imghdr' is deprecated and slated for removal in Python 3.13
+    import imghdr
+
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 =========================== short test summary info ============================
-ERROR app/tests - ImportError: libodbc.so.2: cannot open shared object file: ...
+ERROR app/tests - ImportError: cannot import name 'engine' from 'app.database...
 !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-========================= 1 warning, 1 error in 1.41s ==========================
+======================== 37 warnings, 1 error in 2.63s =========================
